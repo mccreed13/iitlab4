@@ -1,0 +1,21 @@
+name: Docker Image CD
+
+on:
+  workflow_run:
+    workflows: ["Docker Image CI"]
+    types:
+      - completed
+jobs:
+
+  build:
+
+    runs-on: self-hosted
+
+    steps:
+      - name: Pull Docker image from Dockerhub
+        run: sudo docker pull mccreed13/iitlab4:latest
+      - name: Delete Old Docker container
+        run: sudo docker rm -f iitlab4-container || true
+      - name: Run Docker Container
+        run: sudo docker run -d -p 8080:8080 --name iitlab4-container mccreed13/iitlab4
+
