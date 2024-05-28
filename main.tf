@@ -23,7 +23,7 @@ resource "aws_instance" "web" {
   Name = "Lab6"
  }
  
- user_data = <<-EOF
+ user_data = << EOF
   #!/bin/bash
   sudo apt update -y
   sudo apt install -y docker
