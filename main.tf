@@ -7,6 +7,16 @@ terraform{
  }
 }
 
+variable "aws_access" {
+ type = string
+ sensitive = true
+}
+
+variable "aws_secret" {
+ type = string
+ sensitive = true
+}
+
 provider "aws" {
  region = "eu-north-1"
  access_key = var.aws_access
