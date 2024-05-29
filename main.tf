@@ -18,7 +18,7 @@ variable "aws_secret" {
 }
 
 provider "aws" {
- region = "eu-north-2"
+ region = "eu-north-1"
  access_key = var.aws_access
  secret_key = var.aws_secret
 }
