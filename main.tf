@@ -18,7 +18,7 @@ variable "aws_secret" {
 }
 
 provider "aws" {
- region = "eu-north-1"
+ region = "eu-north-2"
  access_key = var.aws_access
  secret_key = var.aws_secret
 }
@@ -30,7 +30,7 @@ resource "aws_instance" "web" {
  vpc_security_group_ids = [aws_security_group.http_server.id]
  
  tags = {
-  Name = "Lab6_1"
+  Name = "Lab666"
  }
  
  user_data = <<-EOF
@@ -50,12 +50,12 @@ resource "aws_instance" "web" {
 }
 
 resource "aws_security_group" "http_server"{
- name = "web_server2"
+ name = "lab6sec"
  description = "Inbound and outbound traffic"
  vpc_id = "vpc-06412e926c584167b"
  
  tags = {
-  Name = "web-server"
+  Name = "lab6sec"
  }
 }
 
