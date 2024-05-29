@@ -30,7 +30,7 @@ resource "aws_instance" "web" {
  vpc_security_group_ids = [aws_security_group.http_server.id]
  
  tags = {
-  Name = "Lab6"
+  Name = "Lab6_1"
  }
  
  user_data = <<-EOF
@@ -40,6 +40,12 @@ resource "aws_instance" "web" {
   sudo docker pull mccreed13/iitlab4:latest
   sudo docker rm -f iitlab4-containter || true
   sudo docker run -d -p 80:80 --name iitlab4-containter mccreed13/iitlab4
+  mkdir actions-runner && cd actions-runner
+  curl -o actions-runner-linux-x64-2.316.1.tar.gz -L https://github.com/actions/runner/releases/download/v2.316.1/actions-runner-linux-x64-2.316.1.tar.gz
+  echo "d62de2400eeeacd195db91e2ff011bfb646cd5d85545e81d8f78c436183e09a8  actions-runner-linux-x64-2.316.1.tar.gz" | shasum -a 256 -c
+  tar xzf ./actions-runner-linux-x64-2.316.1.tar.gz
+  ./config.sh --url https://github.com/mccreed13/iitlab4 --token AYVLO2IPXAMKD53BMLDW2E3GK4YME
+  ./run.sh
  EOF 
 }
 
