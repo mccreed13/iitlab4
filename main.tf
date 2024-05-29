@@ -50,7 +50,7 @@ resource "aws_instance" "web" {
 }
 
 resource "aws_security_group" "http_server"{
- name = "web_server"
+ name = "web_server2"
  description = "Inbound and outbound traffic"
  vpc_id = "vpc-06412e926c584167b"
  
