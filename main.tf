@@ -73,8 +73,8 @@ resource "aws_vpc_security_group_ingress_rule" "http_server_ssh_rule" {
 
 resource "aws_vpc_security_group_egress_rule" "http_server_outbound_rule" {
  security_group_id = aws_security_group.http_server.id
- from_port = 0
- to_port = 0
+ from_port = "-1"
+ to_port = "-1"
  cidr_ipv4 = "0.0.0.0/0"
  ip_protocol = "-1"
 }
